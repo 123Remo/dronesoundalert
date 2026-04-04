@@ -1,3 +1,4 @@
+!!The application is still unfinished and requires more testing.!!
 
 **Drone Sound Alert** is an advanced Android-based monitoring tool designed for hobbyist use to acoustically detect the presence of drones and monitor the security of the GPS environment (jamming detection). It is optimized for use in quiet environments outside urban areas to provide high-precision situational awareness.
 
