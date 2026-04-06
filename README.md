@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 !!The application is still unfinished and requires more testing.!!
-=======
-# Drone Sound Alert (DSA)
->>>>>>> 6bc38b9 (eka)
 
 **Drone Sound Alert** is an advanced Android-based monitoring tool designed for hobbyist use to acoustically detect the presence of drones and monitor the security of the GPS environment (jamming detection). It is optimized for use in quiet environments outside urban areas to provide high-precision situational awareness.
 
@@ -35,11 +31,7 @@
 **Compliance:** Users are responsible for complying with all local aviation, privacy, and radio frequency laws.
 
 ## 📄 License
-<<<<<<< HEAD
 This project is licensed under the **MIT License** 
-=======
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
->>>>>>> 6bc38b9 (eka)
 
 ## 📚 Third-Party Attributions
 This app uses several open-source libraries:
