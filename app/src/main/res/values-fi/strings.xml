@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Drone Sound Alert</string>
+
+    <!-- Main Activity -->
+    <string name="status_off">Tunnistus ei ole päällä</string>
+    <string name="status_listening">Kuunnellaan...</string>
+    <string name="status_analyzing">Analysoidaan... (%1$s s)</string>
+    <string name="status_cooldown">Cooldown päällä...</string>
+    <string name="status_warning">VAROITUS: MAHDOLLINEN DRONE HAVAITTU!</string>
+    <string name="frequency_text">Taajuus: %1$d Hz</string>
+    <string name="start_detection">ALOITA ÄÄNITUNNISTUS</string>
+    <string name="stop_detection">LOPETA ÄÄNITUNNISTUS</string>
+    <string name="bg_gnss_monitor">Tausta-GPS tarkkailu (Jamming)</string>
+    <string name="gps_live">GPS Live</string>
+    <string name="map">Kartta</string>
+    <string name="logs">Havaintolokit</string>
+    <string name="general_settings">Yleiset asetukset</string>
+    <string name="alert_settings">Hälytysasetukset</string>
+    <string name="mic_setup">Mikrofonin asetukset</string>
+    <string name="about">Tietoja</string>
+    <string name="manual">Käyttöohje</string>
+    <string name="map_open">Avaa sijainti kartalla</string>
+    <string name="gps_off_title">GPS ei ole päällä</string>
+    <string name="gps_off_msg">Sijaintipalvelut tarvitaan. Ota GPS käyttöön?</string>
+    <string name="gnss_status_no_permission">Sijaintilupa tai GPS tarvitaan valvontaan.</string>
+    <string name="start_anyway">Aloita silti</string>
+    <string name="settings">Asetukset</string>
+    <string name="cancel">Peruuta</string>
+    <string name="my_location">Sijaintini</string>
+
+    <!-- Manual Activity -->
+    <string name="manual_title">Käyttöohje</string>
+    <string name="print_manual">Tulosta käyttöohje (PDF)</string>
+    <string name="manual_content"><![CDATA[
+        <h3>1. DRONE-TUNNISTUSJÄRJESTELMÄ</h3>
+        <p>Sovellus valvoo ympäristöä laitteesi mikrofonin avulla tunnistaakseen drone-moottoreiden ja potkureiden korkeataajuiset akustiset sormenjäljet.</p>
+        <ul>
+            <li><b>Aloita/Lopeta:</b> Aktivoi analysaattorin. Valvonta jatkuu taustalla, jos poistut sovelluksesta.</li>
+            <li><b>Visualisoinnit:</b> Valitse <b>Spektrogrammi</b> (vesiputousnäkymä historialla) tai <b>Oskilloskooppi</b> (reaaliaikaiset aaltopiikit). Molemmat näyttävät hälytysrajat.</li>
+            <li><b>Tilat:</b> Kuunnellaan (etsii piikkejä), Analysoidaan (varmistaa havainnon), Varoitus (hälytykset aktivoituvat) ja Cooldown (lepotila toistuvien hälytysten estämiseksi).</li>
+        </ul>
+
+        <h3>2. MIKROFONIN JA TEKOÄLYN ASETUKSET</h3>
+        <p>Säädä mikrofonin herkkyyttä ja analyysitapaa:</p>
+        <ul>
+            <li><b>Äänilähde:</b> Valitse puhelimen mikrofoni, Bluetooth-kuuloke (SCO) tai <b>paikallinen äänitiedosto</b>.</li>
+            <li><b>Äänitiedostotila:</b> Valitse .wav tai .mp3 tiedosto testataksesi tunnistuslogiikkaa silmukassa. Erinomainen työkalu laboratoriotestaukseen.</li>
+            <li><b>Vahvistus (Gain) ja Noise Gate:</b> Nosta herkkyyttä kauemmille äänille ja vaimenna staattinen pohjakohina.</li>
+            <li><b>AI-tunnistus (TensorFlow Lite):</b> Korvaa perinteisen analyysin neuroverkolla. Käyttää peräkkäisiä havaintoja ja tasoitusta vähentääkseen vääriä hälytyksiä.</li>
+        </ul>
+
+        <h3>3. GPS-HÄIRINTÄ (JAMMING)</h3>
+        <p>DSA valvoo satelliittien (GPS/Galileo/GLONASS) signaalin tilaa ja terveyttä.</p>
+        <ul>
+            <li><b>Jamming Score:</b> Matemaattinen pisteytys (0-10). Pisteet 4+ laukaisevat hälytyksen. Perustuu signaalin (C/N0) laskuun ja satelliittien määrään.</li>
+            <li><b>Baseline-kartoitus:</b> Tärkeää tarkkuudelle. Tallentaa normaalin tason 30-60 sekunnin ajan avoimessa tilassa.</li>
+        </ul>
+
+        <h3>4. PAIKALLISET HÄLYTYKSET</h3>
+        <p>Välitön palaute suoraan laitteessa:</p>
+        <ul>
+            <li><b>Ääni:</b> Valitse haluamasi hälytysääni laitteen muistista.</li>
+            <li><b>Salama:</b> Vilkuttaa kameran LED-valoa 5 kertaa havainnon tapahtuessa.</li>
+            <li><b>Värinä:</b> Taktinen palaute hiljaiseen tai meluisaan ympäristöön.</li>
+            <li><b>Viive ja Cooldown:</b> Säädä kuinka monta sekuntia dronen on kuuluttava ennen hälytystä, ja kuinka kauan odotetaan ennen seuraavaa ilmoitusta.</li>
+        </ul>
+
+        <h3>5. ETÄHÄLYTYKSET</h3>
+        <p>Sovellus tukee useita tapoja lähettää ilmoituksia ulkoisiin järjestelmiin:</p>
+        <ul>
+            <li><b>Sähköposti:</b> SendGrid API tai SMTP (TLS). Voi liittää mukaan koordinaatit, aikaleiman ja Google Maps -linkin.</li>
+            <li><b>Rsyslog (JSON):</b> Lähettää rakenteellista dataa palvelimelle (UDP tai suojattu TLS). Tukee sijaintia, aikaa ja laitteen debug-tietoja.</li>
+            <li><b>SMS:</b> Automaattiset tekstiviestit valittuihin numeroihin.</li>
+            <li><b>Bluetooth:</b> Lähettää valitun tekstin paritettuun laitteeseen SPP-yhteydellä.</li>
+        </ul>
+
+        <h3>6. LOKITUS JA VIANETSINTÄ</h3>
+        <ul>
+            <li><b>Havaintolokit:</b> Tarkastele aiempia drone- ja jamming-tapahtumia sijaintitietoineen.</li>
+            <li><b>Debug-lokit:</b> Sähköpostille ja Rsyslogille on omat lokinsa vianetsintää varten.</li>
+        </ul>
+
+        <h3>7. OPTIMOINTI JA TEEMAT</h3>
+        <ul>
+            <li><b>Pidä näyttö päällä:</b> Suositeltavaa, jotta prosessori pysyy täydellä teholla AI-analyysia varten.</li>
+            <li><b>Vaalea teema:</b> Korkean kontrastin sinivalkoinen teema päiväkäyttöön.</li>
+            <li><b>Yönäkymä (Dark Mode):</b> Punamusta teema pimeään, suojaa hämäränäköä.</li>
+        </ul>
+    ]]></string>
+
+    <!-- Alert Settings -->
+    <string name="alert_functions">Hälytystoiminnot</string>
+    <string name="sound_alert">Äänihälytys</string>
+    <string name="select_sound">Valitse hälytysääni</string>
+    <string name="selected_sound">Valittu: %1$s</string>
+    <string name="selected_sound_format">Valittu: %1$s</string>
+    <string name="light_alert">Valohälytys (Salama 5x)</string>
+    <string name="vibration_alert">Tärinähälytys</string>
+    <string name="alert_delay">Hälytyksen viive: %1$d s</string>
+    <string name="alert_cooldown">Hälytyksen väli (Cooldown): %1$d min</string>
+    <string name="test_alert">TESTAA HÄLYTYKSIÄ</string>
+    <string name="test_alert_active">Testihälytykset aktivoitu!</string>
+    <string name="bluetooth_alert">Bluetooth-hälytys</string>
+    <string name="bluetooth_on">Bluetooth-lähetys päällä</string>
+    <string name="bluetooth_pair">Hae ja valitse Bluetooth-laite</string>
+    <string name="bluetooth_status">Laite: %1$s</string>
+    <string name="bluetooth_status_format">Laite: %1$s</string>
+    <string name="bluetooth_message_hint">Bluetooth viesti (esim. \'DRONE\')</string>
+    <string name="gnss_settings">GPS Tarkkailun asetukset</string>
+    <string name="gnss_sensitivity">GPS Häirinnän herkkyys: %1$d dB-Hz</string>
+    <string name="gnss_sensitivity_desc">Mitä pienempi arvo, sitä heikomman signaalin laite sallii ennen hälytystä.</string>
+    <string name="baseline_duration">Baseline kartoituksen kesto: %1$d s</string>
+    <string name="sms_alert">SMS-tekstiviesti</string>
+    <string name="sms_numbers_hint">Puhelinnumerot (erota pilkulla)</string>
+    <string name="sms_permission_missing">SMS-lupa puuttuu!</string>
+    <string name="sms_sent">Testi-SMS lähetetty!</string>
+    <string name="sms_error">SMS-virhe: %1$s</string>
+    <string name="email_alert">Email-hälytys</string>
+    <string name="email_alert_on">Sähköpostihälytys Päällä</string>
+    <string name="sendgrid_api">SendGrid API</string>
+    <string name="standard_smtp">Tavallinen SMTP</string>
+    <string name="email_addresses_hint">Vastaanottajien sähköpostit</string>
+    <string name="api_key_hint">SendGrid API Key</string>
+    <string name="load_api_key">Hae API-avain tiedostosta</string>
+    <string name="smtp_host_hint">SMTP Palvelin</string>
+    <string name="smtp_port_hint">SMTP Portti</string>
+    <string name="use_tls">Käytä SSL/TLS</string>
+    <string name="use_starttls">Käytä STARTTLS</string>
+    <string name="username_hint">Käyttäjätunnus</string>
+    <string name="password_hint">Salasana</string>
+    <string name="sender_name_hint">Lähettäjän nimi</string>
+    <string name="email_subject_hint">Sähköpostin otsikko</string>
+    <string name="include_gps_email">Liitä GPS-koordinaatit</string>
+    <string name="include_time_email">Liitä aikaleima</string>
+    <string name="include_google_maps">Liitä Google Maps linkki</string>
+    <string name="view_email_logs">Debug-loki (Sähköposti)</string>
+    <string name="rsyslog_alert_title">Rsyslog Hälytys</string>
+    <string name="rsyslog_alert_switch">Rsyslog-hälytys</string>
+    <string name="rsyslog_tls">Käytä TLS (suojattu)</string>
+    <string name="rsyslog_host_hint">Rsyslog-palvelin (IP/Host)</string>
+    <string name="rsyslog_port_hint">Portti (UDP: 514, TLS: 6514)</string>
+    <string name="load_cert">Lataa TLS-sertifikaatti (.crt/pem)</string>
+    <string name="cert_status">Sertifikaatti: %1$s</string>
+    <string name="include_gps_rsyslog">Liitä GPS-koordinaatit</string>
+    <string name="include_time_rsyslog">Liitä aikaleima</string>
+    <string name="include_debug_rsyslog">Liitä debug-tiedot</string>
+    <string name="view_rsyslog_logs">Debug-loki (Rsyslog)</string>
+    <string name="save_settings">Tallenna asetukset</string>
+    <string name="export_settings">Vie asetukset tiedostoon</string>
+    <string name="include_confidential">Sisällytä luottamukselliset tiedot (salasanat, avaimet)</string>
+    <string name="confidential_warning">VAROITUS: Luottamukselliset tiedot tallennetaan SALAAMATTOMANA tekstinä!</string>
+    <string name="import_settings">Lataa asetukset tiedostosta</string>
+    <string name="settings_exported">Asetukset viety: dsa_asetukset.xml</string>
+    <string name="settings_imported">Asetukset ladattu onnistuneesti!</string>
+    <string name="settings_export_error">Virhe asetusten viennissä</string>
+    <string name="settings_import_error">Virhe asetusten latauksessa</string>
+    <string name="settings_saved">Asetukset tallennettu!</string>
+
+    <!-- General Settings -->
+    <string name="general_settings_title">Yleiset asetukset</string>
+    <string name="display_header">Näyttö</string>
+    <string name="keep_screen_on">Pidä näyttö päällä</string>
+    <string name="dark_mode">Yönäkymä (Tumma tila)</string>
+    <string name="use_spectrogram">Käytä spektrogrammia (Waterfall)</string>
+    <string name="use_oscilloscope">Käytä oskilloskooppia (Viivakaavio)</string>
+    <string name="visualizer_type">Visualisointitapa</string>
+    <string name="show_spectrogram_threshold">Näytä hälytyskynnys (viiva)</string>
+    <string name="smart_features">Älykkäät toiminnot</string>
+    <string name="tflite_analysis">TensorFlow Lite Analyysi</string>
+    <string name="audio_header">Audio</string>
+    <string name="mic_source">Mikrofonin lähde</string>
+    <string name="mic_source_desc">Käytä oletusta tai kokeile muita lähteitä ulkoisille laitteille.</string>
+    <string name="logging_header">Loki ja sisältö</string>
+    <string name="include_gps">Liitä GPS-sijainti lokiin</string>
+    <string name="include_time">Liitä aikaleima lokiin</string>
+
+    <!-- Mic Setup -->
+    <string name="mic_setup_title">Mikrofonin ja AI asetukset</string>
+    <string name="audio_gain">Mikrofonin vahvistus: %1$.1f x</string>
+    <string name="noise_gate">Meluportti (Noise Gate): %1$d</string>
+    <string name="smoothing_count">Tasoitus (Smoothing): %1$d kehystä</string>
+    <string name="consecutive_hits">Vaaditut peräkkäiset havainnot: %1$d</string>
+    <string name="use_bluetooth_sco">Käytä Bluetooth SCO -yhteyttä</string>
+    <string name="use_bluetooth_sco_desc">Aktivoi tämä, jos käytät Bluetooth-mikrofonia.</string>
+    <string name="test_mic">TESTAA MIKROFONIA (10s)</string>
+    <string name="recording">Tallennetaan... %1$d s</string>
+    <string name="playing">Toistetaan tallennetta...</string>
+    <string name="analysis_thresholds">Analyysin kynnysarvot</string>
+    <string name="min_score">Herkkyys (Peak Sensitivity): %1$d</string>
+    <string name="max_score">Vahvistus (Confirmation Count): %1$d</string>
+    <string name="analysis_threshold_desc">Säädä analyysitarkkuutta. Pienempi herkkyys löytää piikit helpommin. Pienempi vahvistus nopeuttaa hälytystä.</string>
+
+    <!-- GNSS Monitor -->
+    <string name="gnss_monitor_title">GPS Signaalin Tarkkailu</string>
+    <string name="gnss_status_searching">Tila: Haetaan signaalia...</string>
+    <string name="gnss_status_active">Tila: Aktiivinen</string>
+    <string name="gnss_status_active_live">Tila: Aktiivinen (Vain katselu)</string>
+    <string name="gnss_status_stopped">Tila: Pysäytetty</string>
+    <string name="gnss_status_idle">Tila: -</string>
+    <string name="satellites_idle">Satelliitteja: -</string>
+    <string name="avg_cn0_idle">Keskim. signaalitaso: -</string>
+    <string name="interference_idle">Analyysi: Pois päältä</string>
+    <string name="satellites_count">Satelliitteja: %1$d (Käytössä: %2$d)</string>
+    <string name="avg_cn0">Keskim. signaalitaso (C/N0): %1$.1f dB-Hz</string>
+    <string name="interference_normal">Häiriötaso: Normaali</string>
+    <string name="interference_elevated">Häiriötaso: Kohonnut</string>
+    <string name="interference_high">Häiriötaso: KORKEA (Mahdollinen häirintä!)</string>
+    <string name="mapping_env">Tila: Kartoitetaan ympäristöä (%1$d%%)</string>
+    <string name="view_gnss_logs">Häiriöloki</string>
+    <string name="open_analysis">Analyysi</string>
+    <string name="reset_baseline">Kartoita ympäristö uudestaan</string>
+    <string name="satellite_details">Satelliittien tiedot:</string>
+    <string name="satellite_name_format">%1$s (SVID: %2$d)</string>
+    <string name="satellite_signal_format">Signaali: %1$.1f dB-Hz %2$s</string>
+    <string name="in_use">[Käytössä]</string>
+    <string name="constellation_gps">GPS</string>
+    <string name="constellation_glonass">GLONASS</string>
+    <string name="constellation_galileo">GALILEO</string>
+    <string name="constellation_beidou">BEIDOU</string>
+    <string name="constellation_other">Muu</string>
+
+    <!-- GNSS Logs -->
+    <string name="gnss_logs_title">GPS Häiriöloki</string>
+    <string name="clear_log">Tyhjennä loki</string>
+
+    <!-- GNSS Analysis -->
+    <string name="gnss_analysis_title">GPS Signaalianalyysi</string>
+    <string name="avg_cn0_label">Keskimääräinen C/N0 (dB-Hz)</string>
+    <string name="jamming_score_label">Häirintäpisteet (Scoring)</string>
+    <string name="live_info">Live: %1$.1f dB-Hz | Sat: %2$d | Score: %3$d</string>
+    <string name="waiting_for_data">Odotetaan GPS-tietoja...</string>
+    <string name="reset">Nollaa</string>
+
+    <!-- TensorFlow Settings -->
+    <string name="tflite_settings_title">TensorFlow Lite Analyysi</string>
+    <string name="use_tflite">Käytä TF Lite tunnistusta</string>
+    <string name="use_tflite_sub">FFT-analyysin sijaan</string>
+    <string name="model_header">Malli</string>
+    <string name="model_status">Malli: %1$s</string>
+    <string name="model_loaded">Ladattu (%1$d KB)</string>
+    <string name="model_not_loaded">Ei ladattu</string>
+    <string name="import_model">Tuo .tflite tiedosto</string>
+    <string name="audio_proc_header">Audio Prosentointi</string>
+    <string name="input_gain">Sisääntulon vahvistus (Gain): %1$.1f x</string>
+    <string name="min_volume">Minimi äänenvoimakkuus: %1$d</string>
+    <string name="window_size">Ikkunan koko</string>
+    <string name="window_05">0.5s</string>
+    <string name="window_10">1.0s</string>
+    <string name="analysis_smoothing_header">Analyysin tasoitus</string>
+    <string name="classification_threshold">Luokittelun kynnysarvo: %1$.2f</string>
+    <string name="threshold_desc">Suurempi arvo vähentää vääriä hälytyksiä mutta vaatii selkeämmän tunnistuksen.</string>
+    <string name="smoothing_label">Tulosten tasoitus (Smoothing): %1$d</string>
+    <string name="consecutive_label">Peräkkäiset havainnot: %1$d</string>
+    <string name="consecutive_desc">Kuinka monta peräkkäistä tunnistusta tarvitaan ennen hälytystä (3-15).</string>
+    <string name="save_tflite_settings">Tallenna TF Lite asetukset</string>
+
+    <!-- Service Status Messages -->
+    <string name="service_status_both">Ääni ja GPS-tarkkailu päällä</string>
+    <string name="service_status_audio">Äänitunnistus päällä</string>
+    <string name="service_status_gps">GPS-tarkkailu päällä</string>
+    <string name="service_status_waiting">Odotetaan...</string>
+    <string name="service_title">Drone Sound Alert</string>
+
+    <!-- Alert Titles -->
+    <string name="alert_drone_detected">Mahdollinen drone havaittu!</string>
+    <string name="alert_drone_detected_with_range">Mahdollinen drone havaittu! (%1$d-%2$d Hz)</string>
+    <string name="alert_jamming_detected">GPS-häirintä havaittu!</string>
+    <string name="reason_sudden_drop">Äkillinen tehon lasku</string>
+    <string name="reason_low_stddev">Tasainen signaalin heikkeneminen</string>
+    <string name="reason_weak_signal">Heikko signaali</string>
+    <string name="reason_multi_gnss">Monen järjestelmän häiriö (Jamming)</string>
+
+    <!-- Misc -->
+    <string name="unknown_val">Tuntematon</string>
+    <string name="default_val">Oletus</string>
+    <string name="none_val">Ei mitään</string>
+</resources>

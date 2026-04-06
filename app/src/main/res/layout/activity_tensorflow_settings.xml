@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tflite_settings_title"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_use_tflite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_tflite"
+            app:subtitle="@string/use_tflite_sub" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/model_header"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/text_model_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/model_not_loaded"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_import_model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/import_model"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_proc_header"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/label_tflite_gain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/input_gain" />
+
+        <SeekBar
+            android:id="@+id/seek_tflite_gain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="40"
+            android:progress="10" />
+
+        <TextView
+            android:id="@+id/label_tflite_min_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/min_volume"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seek_tflite_min_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000"
+            android:progress="100" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/window_size"
+            android:layout_marginTop="8dp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupWindowSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+            <RadioButton
+                android:id="@+id/radioWindow05"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/window_05" />
+            <RadioButton
+                android:id="@+id/radioWindow10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/window_10"
+                android:checked="true" />
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/analysis_smoothing_header"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/label_tflite_threshold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/classification_threshold" />
+
+        <SeekBar
+            android:id="@+id/seek_tflite_threshold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="70" />
+
+        <TextView
+            android:id="@+id/label_tflite_smoothing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/smoothing_label"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seek_tflite_smoothing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="9"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/label_tflite_consecutive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/consecutive_label"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seek_tflite_consecutive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="14"
+            android:progress="2" />
+
+        <Button
+            android:id="@+id/btn_save_tflite_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save_tflite_settings"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

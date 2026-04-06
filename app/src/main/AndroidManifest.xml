@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DroneSoundAlert">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="Alert Settings"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".BluetoothDeviceActivity"
+            android:label="Select Bluetooth Device"
+            android:parentActivityName=".SettingsActivity" />
+
+        <activity
+            android:name=".GeneralSettingsActivity"
+            android:label="General Settings"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".AudioSetupActivity"
+            android:label="Audio Setup"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".GpsSettingsActivity"
+            android:label="GPS Jamming Settings"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".ManualActivity"
+            android:label="User Manual"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".TensorFlowSettingsActivity"
+            android:label="TensorFlow Analysis"
+            android:parentActivityName=".MicSetupActivity" />
+
+        <activity
+            android:name=".LogActivity"
+            android:label="Detections Log"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".EmailLogActivity"
+            android:label="Email Debug Log"
+            android:parentActivityName=".SettingsActivity" />
+
+        <activity
+            android:name=".RsyslogLogActivity"
+            android:label="Rsyslog Debug Log"
+            android:parentActivityName=".SettingsActivity" />
+
+        <activity
+            android:name=".GnssMonitorActivity"
+            android:label="GPS Monitoring"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".GnssLogActivity"
+            android:label="GPS Jamming Log"
+            android:parentActivityName=".GnssMonitorActivity" />
+
+        <activity
+            android:name=".GnssAnalysisActivity"
+            android:label="GPS Analysis Graph"
+            android:parentActivityName=".GnssMonitorActivity" />
+
+        <service
+            android:name=".DroneDetectionService"
+            android:foregroundServiceType="microphone|location"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

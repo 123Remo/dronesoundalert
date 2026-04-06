@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <ImageView
+        android:id="@+id/logIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@android:drawable/ic_dialog_alert" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:id="@+id/logTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2024-05-20 12:45"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/logCoords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="60.169, 24.938 (Google Maps linkki)"
+            android:textColor="#555"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>

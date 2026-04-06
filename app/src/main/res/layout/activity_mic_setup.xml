@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mic_setup"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_header"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mic_source"
+            android:textSize="14sp" />
+
+        <Spinner
+            android:id="@+id/spinner_audio_source"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="8dp" />
+
+        <Button
+            android:id="@+id/btn_select_audio_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_audio_file"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/label_audio_file_path"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_file_selected"
+            android:textSize="11sp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_play_through_speaker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_through_speaker"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/label_play_through_speaker_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_through_speaker_desc"
+            android:textSize="11sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mic_source_desc"
+            android:textSize="11sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_bluetooth_sco"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_bluetooth_sco" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/use_bluetooth_sco_desc"
+            android:textSize="11sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Audio Gain -->
+        <TextView
+            android:id="@+id/label_audio_gain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/audio_gain" />
+
+        <SeekBar
+            android:id="@+id/seek_audio_gain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="10" />
+
+        <!-- Noise Gate -->
+        <TextView
+            android:id="@+id/label_noise_gate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/noise_gate"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seek_noise_gate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="5000"
+            android:progress="100" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/analysis_thresholds"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Analysis Range -->
+        <TextView
+            android:id="@+id/label_analysis_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/analysis_range" />
+
+        <com.google.android.material.slider.RangeSlider
+            android:id="@+id/slider_analysis_range"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:valueFrom="0"
+            android:valueTo="22050"
+            app:values="@array/default_range_values" />
+
+        <TextView
+            android:id="@+id/label_min_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/min_score" />
+
+        <SeekBar
+            android:id="@+id/seek_min_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="50"
+            android:progress="15" />
+
+        <TextView
+            android:id="@+id/label_max_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/max_score"
+            android:layout_marginTop="8dp" />
+
+        <SeekBar
+            android:id="@+id/seek_max_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"
+            android:progress="5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/analysis_threshold_desc"
+            android:textSize="11sp"
+            android:textColor="#888888"
+            android:layout_marginBottom="16dp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ccc"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btn_test_audio_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_file"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnTestMic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/test_mic"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/smart_features"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btn_tensorflow_settings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tflite_analysis"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnSaveMicSetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/save_settings"
+            android:layout_marginTop="24dp" />
+
+    </LinearLayout>
+</ScrollView>

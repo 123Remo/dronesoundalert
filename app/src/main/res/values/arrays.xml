@@ -1,0 +1,6 @@
+<resources>
+    <array name="default_range_values">
+        <item>2000</item>
+        <item>8000</item>
+    </array>
+</resources>

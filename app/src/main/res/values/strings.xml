@@ -1,0 +1,297 @@
+<resources>
+    <string name="app_name">Drone Sound Alert</string>
+
+    <!-- Main Activity -->
+    <string name="status_off">Detection is off</string>
+    <string name="indicator_drone_detected">Possible drone detected</string>
+    <string name="indicator_analyzing">Analyzing sound</string>
+    <string name="indicator_listening">Listening</string>
+    <string name="status_listening">Listening...</string>
+    <string name="status_analyzing">Analyzing... (%1$s s)</string>
+    <string name="status_cooldown">Cooldown active...</string>
+    <string name="status_warning">WARNING: POSSIBLE DRONE DETECTED!</string>
+    <string name="frequency_text">Frequency: %1$d Hz</string>
+    <string name="start_detection">START DETECTION</string>
+    <string name="stop_detection">STOP DETECTION</string>
+    <string name="bg_gnss_monitor">Background GPS Monitoring</string>
+    <string name="gps_live">GPS Live</string>
+    <string name="map">Map</string>
+    <string name="logs">Detections Log</string>
+    <string name="general_settings">General Settings</string>
+    <string name="alert_settings">Alert Settings</string>
+    <string name="mic_setup">Audio Setup</string>
+    <string name="about">About</string>
+    <string name="manual">Manual</string>
+    <string name="map_open">Open Map</string>
+    <string name="gps_off_title">GPS is Off</string>
+    <string name="gps_off_msg">Location services are required. Enable GPS?</string>
+    <string name="gnss_status_no_permission">Location permission or GPS is required for monitoring.</string>
+    <string name="start_anyway">Start Anyway</string>
+    <string name="settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_location">My Location</string>
+
+    <!-- Manual Activity -->
+    <string name="manual_title">User Manual</string>
+    <string name="print_manual">Print Manual (PDF)</string>
+    <string name="manual_content"><![CDATA[
+        <h3>1. DETECTION SYSTEM</h3>
+        <p>DSA monitors the environment using your device microphone to identify the specific high-pitched acoustic signatures of drone motors and propellers.</p>
+        <ul>
+            <li><b>Modes:</b> Choose between standard FFT Frequency Analysis or Advanced AI (TensorFlow Lite).</li>
+            <li><b>Visualizers:</b> Choose between <b>Spectrogram</b> (waterfall history) or <b>Oscilloscope</b> (real-time wave peaks). Both show detection threshold lines.</li>
+            <li><b>States:</b> Scanning (Listening), Verification (Analyzing), Triggered (Warning), and Sleep (Cooldown).</li>
+        </ul>
+
+        <h3>2. MICROPHONE & AI SETUP</h3>
+        <p>Fine-tune how the app hears the environment:</p>
+        <ul>
+            <li><b>Input Source:</b> Choose between internal microphones, Bluetooth headsets, or a <b>Local Audio File</b>.</li>
+            <li><b>Audio File Mode:</b> Select a .wav or .mp3 file to test detection logic in a loop. Ideal for bench testing.</li>
+            <li><b>Audio Gain:</b> Increases sensitivity for detecting targets at longer distances.</li>
+            <li><b>Noise Gate:</b> Filters out background hum and static noise.</li>
+            <li><b>AI Analysis:</b> Replaces peak detection with neural pattern recognition to filter out birds, wind, or planes.</li>
+        </ul>
+
+        <h3>3. GPS JAMMING & INTERFERENCE</h3>
+        <p>DSA tracks satellite health to detect spoofing or electronic interference.</p>
+        <ul>
+            <li><b>Jamming Score:</b> A 0-10 rating. Scores 4+ trigger an alert. Based on signal power (C/N0), satellite drops, and fix stability.</li>
+            <li><b>Baseline Mapping:</b> Establish a reference level by recording for 30-60s in a clean area.</li>
+        </ul>
+
+        <h3>4. LOCAL ALERTS</h3>
+        <p>Immediate feedback methods on the device:</p>
+        <ul>
+            <li><b>Sound:</b> Select a custom alarm tone from your device.</li>
+            <li><b>Flashlight:</b> Rapidly flashes the camera LED 5 times upon detection.</li>
+            <li><b>Vibration:</b> Haptic feedback for tactical or noisy environments.</li>
+            <li><b>Delay &amp; Cooldown:</b> Set how many seconds a drone must be heard before triggering, and how long to wait before the next alert.</li>
+        </ul>
+
+        <h3>5. REMOTE ALERTS</h3>
+        <p>Automated notifications to external systems:</p>
+        <ul>
+            <li><b>Email:</b> Supports SendGrid or SMTP. Can include GPS coordinates, timestamps, and Google Maps links.</li>
+            <li><b>Rsyslog:</b> Sends structured JSON payloads (event, time, coordinates, debug data) over UDP or Secure TLS.</li>
+            <li><b>SMS:</b> Automatic text alerts to your contact list.</li>
+            <li><b>Bluetooth:</b> Send trigger strings to paired external devices via SPP.</li>
+        </ul>
+
+        <h3>6. LOGGING &amp; OPTIMIZATION</h3>
+        <ul>
+            <li><b>Debug Logs:</b> Dedicated logs for Email and Rsyslog to troubleshoot errors.</li>
+            <li><b>Keep Screen On:</b> Highly recommended to ensure CPU remains at full speed.</li>
+            <li><b>Night Vision:</b> Tactical theme to preserve night vision in the field.</li>
+        </ul>
+    ]]></string>
+
+    <!-- Alert Settings -->
+    <string name="alert_functions">Alert Functions</string>
+    <string name="sound_alert">Sound Alert</string>
+    <string name="select_sound">Select Sound</string>
+    <string name="selected_sound">Selected: %1$s</string>
+    <string name="selected_sound_format">Selected: %1$s</string>
+    <string name="light_alert">Flashlight (5x)</string>
+    <string name="vibration_alert">Vibration</string>
+    <string name="alert_delay">Detection Delay: %1$d s</string>
+    <string name="alert_cooldown">Interval (Cooldown): %1$d min</string>
+    <string name="test_alert">TEST ALERT(S)</string>
+    <string name="test_alert_active">Test alerts activated!</string>
+    <string name="bluetooth_alert">Bluetooth Alert</string>
+    <string name="bluetooth_on">Bluetooth On</string>
+    <string name="bluetooth_pair">Select Bluetooth Device</string>
+    <string name="bluetooth_status">Device: %1$s</string>
+    <string name="bluetooth_status_format">Device: %1$s</string>
+    <string name="bluetooth_message_hint">BT Message (e.g. \'DRONE\')</string>
+    <string name="gnss_settings">GPS Jamming Settings</string>
+    <string name="gnss_sensitivity">Sensitivity: %1$d dB-Hz</string>
+    <string name="gnss_sensitivity_desc">Lower value = less sensitive to weak signals.</string>
+    <string name="baseline_duration">Baseline Mapping: %1$d s</string>
+    <string name="sms_alert">SMS Alert</string>
+    <string name="sms_numbers_hint">Phone Numbers (comma separated)</string>
+    <string name="sms_permission_missing">SMS permission missing!</string>
+    <string name="sms_sent">Test SMS sent!</string>
+    <string name="sms_error">SMS error: %1$s</string>
+    <string name="email_alert">Email Alert</string>
+    <string name="email_alert_on">Email On</string>
+    <string name="sendgrid_api">SendGrid API</string>
+    <string name="standard_smtp">SMTP Server</string>
+    <string name="email_addresses_hint">Recipient Emails</string>
+    <string name="api_key_hint">API Key</string>
+    <string name="api_key_loaded">API Key loaded</string>
+    <string name="load_api_key">Load Key from File</string>
+    <string name="smtp_host_hint">SMTP Host</string>
+    <string name="smtp_port_hint">Port</string>
+    <string name="use_tls">Use SSL/TLS</string>
+    <string name="use_starttls">Use STARTTLS</string>
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="sender_name_hint">Sender Name</string>
+    <string name="email_subject_hint">Subject</string>
+    <string name="include_gps_email">Include GPS Coordinates</string>
+    <string name="include_time_email">Include Timestamp</string>
+    <string name="include_google_maps">Include Google Maps Link</string>
+    <string name="view_email_logs">Debug Log (Email)</string>
+    <string name="rsyslog_alert_title">Rsyslog Alert</string>
+    <string name="rsyslog_alert_switch">Rsyslog On</string>
+    <string name="rsyslog_tls">Secure TLS</string>
+    <string name="rsyslog_host_hint">Rsyslog Server</string>
+    <string name="rsyslog_port_hint">Port</string>
+    <string name="load_cert">Load Certificate (.crt)</string>
+    <string name="cert_status">Cert: %1$s</string>
+    <string name="cert_status_format">Cert: %1$s</string>
+    <string name="cert_loaded">Loaded</string>
+    <string name="cert_not_loaded">Not Loaded</string>
+    <string name="cert_saved">Certificate saved</string>
+    <string name="include_gps_rsyslog">Include GPS Coordinates</string>
+    <string name="include_time_rsyslog">Include Timestamp</string>
+    <string name="include_debug_rsyslog">Include Debug Info</string>
+    <string name="rsyslog_format_label">Log Format</string>
+    <string name="rsyslog_format_normal">Normal (Plain Text)</string>
+    <string name="rsyslog_format_json">JSON (Structured)</string>
+    <string name="view_rsyslog_logs">Debug Log (Rsyslog)</string>
+    <string name="save_settings">Save Settings</string>
+    <string name="export_settings">Export Settings to File</string>
+    <string name="include_confidential">Include confidential data (passwords, keys)</string>
+    <string name="confidential_warning">WARNING: Confidential data will be stored in UNENCRYPTED plain text!</string>
+    <string name="import_settings">Import Settings from File</string>
+    <string name="settings_exported">Settings exported to dsa_asetukset.xml</string>
+    <string name="settings_imported">Settings imported successfully!</string>
+    <string name="settings_export_error">Error exporting settings</string>
+    <string name="settings_import_error">Error importing settings</string>
+    <string name="settings_saved">Settings saved!</string>
+
+    <!-- General Settings -->
+    <string name="general_settings_title">General Settings</string>
+    <string name="display_header">Display</string>
+    <string name="keep_screen_on">Keep Screen On</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="use_spectrogram">Use Spectrogram (Waterfall)</string>
+    <string name="use_oscilloscope">Use Oscilloscope (Line Graph)</string>
+    <string name="visualizer_type">Visualizer Type</string>
+    <string name="show_spectrogram_threshold">Show Alert Threshold Line</string>
+    <string name="smart_features">Advanced AI</string>
+    <string name="tflite_analysis">TensorFlow Lite</string>
+    <string name="audio_header">Audio</string>
+    <string name="mic_source">Input Source</string>
+    <string name="mic_source_desc">Try different sources for external mics.</string>
+    <string name="logging_header">Logging</string>
+    <string name="include_gps">Log GPS coordinates</string>
+    <string name="include_time">Log Timestamps</string>
+
+    <!-- Audio Setup -->
+    <string name="mic_setup_title">Audio Setup</string>
+    <string name="audio_gain">Audio Gain: %1$.1f x</string>
+    <string name="noise_gate">Noise Gate (Min Volume): %1$d</string>
+    <string name="smoothing_count">Smoothing (Averaging): %1$d frames</string>
+    <string name="consecutive_hits">Required Consecutive Hits: %1$d</string>
+    <string name="use_bluetooth_sco">Use Bluetooth SCO (Headsets)</string>
+    <string name="use_bluetooth_sco_desc">Enable this if using a Bluetooth headset mic.</string>
+    <string name="play_through_speaker">Play through speaker</string>
+    <string name="play_through_speaker_desc">Hear the audio file while it is being analyzed.</string>
+    <string name="select_audio_file">Select Audio File</string>
+    <string name="audio_file_path">File: %1$s</string>
+    <string name="no_file_selected">No file selected</string>
+    <string name="audio_source_file">Audio File (Looping)</string>
+    <string name="test_mic">TEST MICROPHONE</string>
+    <string name="test_file">TEST AUDIO FILE</string>
+    <string name="please_select_audio_file">Please select an audio file!</string>
+    <string name="error_playing_file">Error playing audio file</string>
+    <string name="recording">Recording... %1$d s</string>
+    <string name="playing">Playing back...</string>
+    <string name="testing_file">Testing file...</string>
+
+    <string name="analysis_thresholds">Analysis Thresholds</string>
+    <string name="analysis_range">Analysis Range: %1$d - %2$d Hz</string>
+    <string name="min_score">Peak Sensitivity: %1$d</string>
+    <string name="max_score">Confirmation Count: %1$d</string>
+    <string name="analysis_threshold_desc">Adjust FFT strictness. Lower Sensitivity = easier to find peaks. Lower Confirmation = faster alarm.</string>
+
+    <!-- GNSS Monitor -->
+    <string name="gnss_monitor_title">GPS Signal Monitoring</string>
+    <string name="gnss_status_searching">Status: Searching...</string>
+    <string name="gnss_status_active">Status: Active</string>
+    <string name="gnss_status_active_live">Status: Active (Live View Only)</string>
+    <string name="gnss_status_stopped">Status: Stopped</string>
+    <string name="gnss_status_idle">Status: -</string>
+    <string name="satellites_idle">Satellites: -</string>
+    <string name="avg_cn0_idle">Avg. Signal: -</string>
+    <string name="interference_idle">Analysis: Off</string>
+    <string name="gnss_not_supported">Status: GNSS not supported</string>
+    <string name="satellites_count">Satellites: %1$d (Used: %2$d)</string>
+    <string name="avg_cn0">Avg. Signal: %1$.1f dB-Hz</string>
+    <string name="interference_normal">Level: Normal</string>
+    <string name="interference_elevated">Level: Elevated</string>
+    <string name="interference_high">Level: HIGH (Jamming!)</string>
+    <string name="mapping_env">Mapping Environment (%1$d%%)</string>
+    <string name="view_gnss_logs">Jamming Log</string>
+    <string name="open_analysis">Analysis Graph</string>
+    <string name="reset_baseline">Reset Baseline</string>
+    <string name="satellite_details">Active Satellites:</string>
+    <string name="satellite_name_format">%1$s (SVID: %2$d)</string>
+    <string name="satellite_signal_format">Signal: %1$.1f dB-Hz %2$s</string>
+    <string name="in_use">[In Use]</string>
+    <string name="constellation_gps">GPS</string>
+    <string name="constellation_glonass">GLONASS</string>
+    <string name="constellation_galileo">GALILEO</string>
+    <string name="constellation_beidou">BEIDOU</string>
+    <string name="constellation_other">Other</string>
+
+    <!-- GNSS Logs -->
+    <string name="gnss_logs_title">GPS Jamming Log</string>
+    <string name="clear_log">Clear Log</string>
+
+    <!-- GNSS Analysis -->
+    <string name="gnss_analysis_title">GPS Analysis Graph</string>
+    <string name="avg_cn0_label">Avg C/N0 (dB-Hz)</string>
+    <string name="jamming_score_label">Jamming Score (0-10)</string>
+    <string name="live_info">Live: %1$.1f dB | Sat: %2$d | Score: %3$d</string>
+    <string name="waiting_for_data">Waiting for GPS data...</string>
+    <string name="reset">Reset</string>
+
+    <!-- TensorFlow Settings -->
+    <string name="tflite_settings_title">TensorFlow Lite AI</string>
+    <string name="use_tflite">Enable AI Detection</string>
+    <string name="use_tflite_sub">Replaces FFT analyzer</string>
+    <string name="model_header">AI Model</string>
+    <string name="model_status">Model: %1$s</string>
+    <string name="model_loaded">Loaded (%1$d KB)</string>
+    <string name="model_loaded_format">Loaded (%1$d KB)</string>
+    <string name="model_not_loaded">Empty</string>
+    <string name="import_model">Import .tflite</string>
+    <string name="audio_proc_header">Processing</string>
+    <string name="input_gain">Gain: %1$.1f x</string>
+    <string name="min_volume">Noise Gate: %1$d</string>
+    <string name="window_size">Window Size</string>
+    <string name="window_05">0.5s</string>
+    <string name="window_10">1.0s</string>
+    <string name="analysis_smoothing_header">Smoothing</string>
+    <string name="classification_threshold">Threshold: %1$.2f</string>
+    <string name="threshold_desc">Higher = stricter classification.</string>
+    <string name="smoothing_label">Confidence Smoothing: %1$d</string>
+    <string name="consecutive_label">Consecutive Hits: %1$d</string>
+    <string name="consecutive_desc">Number of required sequential detections.</string>
+    <string name="save_tflite_settings">Save AI Settings</string>
+
+    <!-- Service Status Messages -->
+    <string name="service_status_both">Audio and GPS monitoring active</string>
+    <string name="service_status_audio">Audio detection active</string>
+    <string name="service_status_gps">GPS monitoring active</string>
+    <string name="service_status_waiting">Waiting...</string>
+    <string name="service_title">Drone Sound Alert</string>
+
+    <!-- Alert Titles -->
+    <string name="alert_drone_detected">Possible drone detected!</string>
+    <string name="alert_drone_detected_with_range">Possible drone detected! (%1$d-%2$d Hz)</string>
+    <string name="alert_jamming_detected">GPS Jamming detected!</string>
+    <string name="reason_sudden_drop">Sudden power drop</string>
+    <string name="reason_low_stddev">Uniform signal attenuation</string>
+    <string name="reason_weak_signal">Weak signal</string>
+    <string name="reason_multi_gnss">Multi-GNSS drop (Jamming likely)</string>
+
+    <!-- Misc -->
+    <string name="unknown_val">Unknown</string>
+    <string name="default_val">Default</string>
+    <string name="none_val">None</string>
+</resources>

@@ -1,0 +1,56 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme for LIGHT mode. -->
+    <style name="Base.Theme.DroneSoundAlert" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Main theme colors -->
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryVariant">@color/primary_blue_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <item name="colorSecondary">@color/accent_blue</item>
+        <item name="colorSecondaryVariant">@color/primary_blue</item>
+        <item name="colorOnSecondary">@color/white</item>
+
+        <!-- Background and Surface -->
+        <item name="android:windowBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/primary_blue</item>
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/primary_blue</item>
+        <item name="android:textColorSecondary">@color/accent_blue</item>
+        <item name="android:editTextColor">@color/primary_blue</item>
+
+        <!-- Outline Color for text fields and other components -->
+        <item name="colorOutline">@color/primary_blue</item>
+
+        <!-- Map default styles to blue components -->
+        <item name="materialButtonStyle">@style/Widget.DroneSoundAlert.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.DroneSoundAlert.Button.Outlined</item>
+        <item name="materialCardViewStyle">@style/Widget.DroneSoundAlert.CardView</item>
+    </style>
+
+    <style name="Theme.DroneSoundAlert" parent="Base.Theme.DroneSoundAlert">
+        <item name="titleTextColor">@color/white</item>
+    </style>
+
+    <!-- Full Blue Button -->
+    <style name="Widget.DroneSoundAlert.Button" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/primary_blue</item>
+    </style>
+
+    <!-- Outlined Button with Blue frame and text -->
+    <style name="Widget.DroneSoundAlert.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="rippleColor">@color/outline_blue</item>
+    </style>
+
+    <!-- Card with Frame -->
+    <style name="Widget.DroneSoundAlert.CardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="strokeColor">?attr/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+</resources>
