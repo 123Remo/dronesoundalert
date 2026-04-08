@@ -31,7 +31,7 @@
 **Compliance:** Users are responsible for complying with all local aviation, privacy, and radio frequency laws.
 
 ## 📄 License
-This project is licensed under the **MIT License** 
+This project is licensed under the **Source-available / non-commercial** 
 
 ## 📚 Third-Party Attributions
 This app uses several open-source libraries:
